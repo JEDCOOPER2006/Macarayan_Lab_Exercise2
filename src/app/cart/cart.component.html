@@ -1,0 +1,64 @@
+@if (showThankYou) {
+  <div class="thank-you-backdrop" (click)="closeThankYou()" role="dialog" aria-modal="true" aria-labelledby="thank-you-title">
+    <div class="thank-you-modal" (click)="$event.stopPropagation()">
+      <div class="thank-you-icon">✓</div>
+      <h2 id="thank-you-title" class="thank-you-title">Thank you for your purchase!</h2>
+      <p class="thank-you-subtitle">Your order has been placed successfully.</p>
+      <div class="thank-you-summary">
+        <span class="thank-you-items">{{ lastOrderCount }} item{{ lastOrderCount !== 1 ? 's' : '' }}</span>
+        <span class="thank-you-total">₱{{ lastOrderTotal | number }}</span>
+      </div>
+      <p class="thank-you-message">We appreciate your support. Happy cubing from Jed's Rubiks Cube Shop!</p>
+      <button type="button" class="thank-you-btn" (click)="closeThankYou()">Continue shopping</button>
+    </div>
+  </div>
+}
+
+<div class="cart-trigger-wrap">
+  <button type="button" class="cart-trigger" (click)="toggle()" [attr.aria-expanded]="isOpen" aria-label="Cart">
+    <span class="cart-icon">🛒</span>
+    @if (cart.count() > 0) {
+  <span class="cart-count">{{ cart.count() }}</span>
+}
+  </button>
+
+  @if (isOpen) {
+    <div class="cart-dropdown">
+      <div class="cart-header">
+        <h3 class="cart-title">Your Cart</h3>
+        @if (cart.cartItems().length > 0) {
+          <button type="button" class="cart-clear" (click)="clearCart()">Clear</button>
+        }
+      </div>
+
+      @if (cart.cartItems().length === 0) {
+        <p class="cart-empty">Your cart is empty.</p>
+      } @else {
+        <ul class="cart-list">
+          @for (item of cart.cartItems(); track item.name) {
+            <li class="cart-item">
+              <img class="cart-item-image" [src]="item.image" [alt]="item.name" />
+              <div class="cart-item-details">
+                <span class="cart-item-name">{{ item.name }}</span>
+                <span class="cart-item-price">₱{{ item.price * item.quantity | number }}</span>
+                <div class="cart-item-qty">
+                  <button type="button" class="qty-btn" (click)="decrease(item.name)" aria-label="Decrease">−</button>
+                  <span class="qty-value">{{ item.quantity }}</span>
+                  <button type="button" class="qty-btn" (click)="increase(item.name)" aria-label="Increase">+</button>
+                </div>
+              </div>
+              <button type="button" class="cart-item-remove" (click)="removeItem(item.name)" aria-label="Remove">×</button>
+            </li>
+          }
+        </ul>
+        <div class="cart-footer">
+          <span class="cart-total-label">Total:</span>
+          <span class="cart-total">₱{{ cart.total() | number }}</span>
+        </div>
+        <div class="cart-actions">
+          <button type="button" class="cart-checkout" (click)="checkout()">Checkout</button>
+        </div>
+      }
+    </div>
+  }
+</div>

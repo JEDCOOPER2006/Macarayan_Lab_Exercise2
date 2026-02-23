@@ -4,6 +4,7 @@
     <a href="#" class="nav-link">Home</a>
     <a href="#products" class="nav-link">Products</a>
     <a href="#" class="nav-link">Contact</a>
+    <app-cart />
   </nav>
 </header>
 
@@ -12,46 +13,8 @@
     <p class="hero-text">Your one-stop shop for Rubik's cubes and speedcubes.</p>
   </section>
 
-  <section id="products" class="products">
-    <h2 class="section-title">Products</h2>
-    <div class="product-grid">
-      <article class="product-card">
-        <img class="product-image" src="/Images/Classic 3×3 Speedcube.jpg" alt="Classic 3×3 Speedcube" />
-        <h3 class="product-name">Classic 3×3 Speedcube</h3>
-        <p class="product-price">₱728</p>
-        <button type="button" class="btn-add">Add to Cart</button>
-      </article>
-      <article class="product-card">
-        <img class="product-image" src="/Images/Pocket 2×2 Cube.jpg" alt="Pocket 2×2 Cube" />
-        <h3 class="product-name">Pocket 2×2 Cube</h3>
-        <p class="product-price">₱504</p>
-        <button type="button" class="btn-add">Add to Cart</button>
-      </article>
-      <article class="product-card">
-        <img class="product-image" src="/Images/4×4 Rubik's Revenge.jpg" alt="4×4 Rubik's Revenge" />
-        <h3 class="product-name">4×4 Rubik's Revenge</h3>
-        <p class="product-price">₱1,064</p>
-        <button type="button" class="btn-add">Add to Cart</button>
-      </article>
-      <article class="product-card">
-        <img class="product-image" src="/Images/5×5 Professor's Cube.jpg" alt="5×5 Professor's Cube" />
-        <h3 class="product-name">5×5 Professor's Cube</h3>
-        <p class="product-price">₱1,399</p>
-        <button type="button" class="btn-add">Add to Cart</button>
-      </article>
-      <article class="product-card">
-        <img class="product-image" src="/Images/Pyramid Cube.png" alt="Pyramid Cube" />
-        <h3 class="product-name">Pyramid Cube</h3>
-        <p class="product-price">₱840</p>
-        <button type="button" class="btn-add">Add to Cart</button>
-      </article>
-      <article class="product-card">
-        <img class="product-image" src="/Images/Megaminx.jpg" alt="Megaminx" />
-        <h3 class="product-name">Megaminx</h3>
-        <p class="product-price">₱1,119</p>
-        <button type="button" class="btn-add">Add to Cart</button>
-      </article>
-    </div>
+  <section id="products">
+    <app-products />
   </section>
 </main>
 

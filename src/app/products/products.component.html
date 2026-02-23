@@ -1,0 +1,15 @@
+<div class="products">
+  <h2 class="section-title">Products</h2>
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let item of products">
+      <img class="product-image" [src]="item.image" [alt]="item.name" />
+      <h3 class="product-name">{{ item.name }}</h3>
+      <p class="price">₱{{ item.price | number }}</p>
+      <p *ngIf="item.available; else outStock" class="status available">Available</p>
+      <ng-template #outStock>
+        <p class="status out-of-stock">Out of Stock</p>
+      </ng-template>
+      <button type="button" class="btn-add" (click)="addToCart(item)" [disabled]="!item.available">Add to Cart</button>
+    </div>
+  </div>
+</div>
